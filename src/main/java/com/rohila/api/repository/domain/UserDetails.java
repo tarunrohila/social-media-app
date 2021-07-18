@@ -28,8 +28,8 @@ public class UserDetails {
     /**
      * Variable declaration for following
      */
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "relation",
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "following",
             joinColumns = @JoinColumn(name = "followerId"),
             inverseJoinColumns = @JoinColumn(name = "followeeId"))
     List<UserDetails> following;

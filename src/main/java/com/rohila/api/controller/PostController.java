@@ -42,7 +42,7 @@ public class PostController {
      * @return created post
      */
     @PostMapping(POSTS_CREATE_ENDPOINT)
-    public Response createPost(@PathVariable(USER_ID_PARAM) String userId, @RequestBody Request request) {
+    public Response createPost(@PathVariable(USER_ID_PARAM) Long userId, @RequestBody Request request) {
         Post post = request.getData(Post.class);
         post.setUserId(userId);
         LOGGER.debug("creating new post of userId = [{}}", userId);

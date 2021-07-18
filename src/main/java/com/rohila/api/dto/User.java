@@ -1,5 +1,9 @@
 package com.rohila.api.dto;
 
+import com.rohila.api.repository.domain.UserDetails;
+
+import java.util.List;
+
 /**
  * Class which is used to create object of User
  *
@@ -16,6 +20,11 @@ public class User {
      * Variable declaration for name
      */
     private String name;
+
+    /**
+     * Variable declaration for following
+     */
+    private List<UserDetails> following;
 
     /**
      * Method to get the value of id
@@ -51,5 +60,23 @@ public class User {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Method to get the value of following
+     *
+     * @return following - following
+     */
+    public List<UserDetails> getFollowing() {
+        return following;
+    }
+
+    /**
+     * Method to set the value of following
+     *
+     * @param following - following
+     */
+    public void setFollowing(List<UserDetails> following) {
+        this.following = following;
     }
 }

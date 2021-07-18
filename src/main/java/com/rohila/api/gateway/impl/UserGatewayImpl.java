@@ -31,7 +31,6 @@ public class UserGatewayImpl implements UserGateway {
     @Autowired
     private UserRepository userRepository;
 
-
     /**
      * Method to follow user
      *
@@ -82,5 +81,17 @@ public class UserGatewayImpl implements UserGateway {
     public UserDetails createUser(UserDetails userDetails) {
         LOGGER.debug("saving new user in DB for username = [{}]", userDetails.getName());
         return userRepository.save(userDetails);
+    }
+
+    /**
+     * Method to retrieve user
+     *
+     * @param userId - userId
+     * @return user
+     */
+    @Override
+    public UserDetails retrieveUser(Long userId) {
+        LOGGER.debug("Retrieving news feeds for user =[{}]", userId);
+        return userRepository.getById(userId);
     }
 }

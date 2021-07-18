@@ -36,7 +36,7 @@ public class PostDetails {
     /**
      * Variable declaration for userId
      */
-    private String userId;
+    private Long userId;
 
     /**
      * Method to get the value of id
@@ -97,7 +97,7 @@ public class PostDetails {
      *
      * @return userId - userId
      */
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
@@ -106,7 +106,7 @@ public class PostDetails {
      *
      * @param userId - userId
      */
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 }

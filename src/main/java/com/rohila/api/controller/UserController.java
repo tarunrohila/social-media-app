@@ -51,7 +51,7 @@ public class UserController {
      * @return return news feeds for user
      */
     @GetMapping(NEWFEEDS_GET_ENDPOINT)
-    public Response retrieveNewsfeeds(@PathVariable(USER_ID_PARAM) String userId) {
+    public Response retrieveNewsfeeds(@PathVariable(USER_ID_PARAM) Long userId) {
         LOGGER.debug("processing request to retrieve news feeds for user = [{}]", userId);
         return userService.retrieveNewsfeeds(userId);
     }

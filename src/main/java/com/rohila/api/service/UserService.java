@@ -28,7 +28,7 @@ public interface UserService {
      * @param userId - userId
      * @return news feeds
      */
-    Response retrieveNewsfeeds(String userId);
+    Response retrieveNewsfeeds(Long userId);
 
     /**
      * Method to create new user

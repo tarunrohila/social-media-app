@@ -4,7 +4,9 @@ import com.rohila.api.bean.Resource;
 import com.rohila.api.dto.User;
 import com.rohila.api.exception.ApiRequestException;
 import com.rohila.api.exception.ApiResponseException;
+import com.rohila.api.gateway.PostGateway;
 import com.rohila.api.gateway.UserGateway;
+import com.rohila.api.repository.domain.PostDetails;
 import com.rohila.api.repository.domain.UserDetails;
 import com.rohila.api.response.Response;
 import com.rohila.api.service.UserService;
@@ -14,10 +16,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
-import static com.rohila.api.constant.AppConstants.ID;
-import static com.rohila.api.constant.AppConstants.USERS;
+import static com.rohila.api.constant.AppConstants.*;
 import static com.rohila.api.constant.ErrorMessageConstants.CREATE_POST_ERROR;
 import static com.rohila.api.constant.ErrorMessageConstants.FOLLOW_USER_ERROR;
 import static com.rohila.api.helper.CommonHelper.mapToDomain;
@@ -41,6 +44,12 @@ public class UserServiceImpl implements UserService {
      */
     @Autowired
     private UserGateway userGateway;
+
+    /**
+     * Autowired instance of postGateway
+     */
+    @Autowired
+    private PostGateway postGateway;
 
     /**
      * MEthod to follow/unfolllow users
@@ -78,8 +87,13 @@ public class UserServiceImpl implements UserService {
      * @return news feeds
      */
     @Override
-    public Response retrieveNewsfeeds(String userId) {
-        return Response.assemble().build(HttpStatus.OK, "succ");
+    public Response retrieveNewsfeeds(Long userId) {
+        LOGGER.debug("retrieving news feed for user = [{}]", userId);
+        UserDetails user = userGateway.retrieveUser(userId);
+        List<Long> userIds = user.getFollowing().stream().map(userDetails -> userDetails.getId()).collect(Collectors.toList());
+        userIds.add(userId);
+        List<Long> postIds = postGateway.retrieveTop20Posts(userIds).stream().map(postDetails -> postDetails.getId()).collect(Collectors.toList());
+        return Response.assemble().build(HttpStatus.OK, new Resource<>(UUID.randomUUID().toString(), POSTS, postIds));
     }
 
     /**

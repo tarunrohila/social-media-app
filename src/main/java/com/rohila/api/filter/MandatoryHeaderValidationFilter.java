@@ -37,7 +37,7 @@ public class MandatoryHeaderValidationFilter extends OncePerRequestFilter {
     /**
      * Constant declaration for healthcheck actuator uri
      */
-    private static final String HEALTHCHECK_ACTUATOR_URI = "/health";
+    private static final String HEALTHCHECK_ACTUATOR_URI = "/actuator";
 
     /**
      * Constant declaration for H2_CONSOLE_URI uri
@@ -66,7 +66,7 @@ public class MandatoryHeaderValidationFilter extends OncePerRequestFilter {
                         .getRequestURI()
                         .substring(request.getContextPath().length())
                         .replaceAll("[/]+$", "");
-        boolean allowedPath = path.endsWith(HEALTHCHECK_ACTUATOR_URI) || path.startsWith(H2_CONSOLE_URI);
+        boolean allowedPath = path.startsWith(HEALTHCHECK_ACTUATOR_URI) || path.startsWith(H2_CONSOLE_URI);
         LOGGER.debug("Request Path = [{}]", path);
         boolean isCorrelationIdPresent = checkCorrelationHeaderPresent(request, response);
         if (!isCorrelationIdPresent && !allowedPath) {

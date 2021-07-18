@@ -34,4 +34,12 @@ public interface UserGateway {
      * @return user
      */
     UserDetails createUser(UserDetails userDetails);
+
+    /**
+     * Method to retrieve user
+     *
+     * @param userId - userId
+     * @return user
+     */
+    UserDetails retrieveUser(Long userId);
 }

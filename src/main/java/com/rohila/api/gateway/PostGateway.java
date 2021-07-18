@@ -21,8 +21,8 @@ public interface PostGateway {
 
     /**
      * Method to retrieve top 20 nes feeds
+     *
      * @param userIds - userIds
-     * @return posts
      * @return posts
      */
     List<PostDetails> retrieveTop20Posts(List<Long> userIds);

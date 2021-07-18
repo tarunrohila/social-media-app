@@ -6,7 +6,6 @@ import com.rohila.api.exception.ApiRequestException;
 import com.rohila.api.exception.ApiResponseException;
 import com.rohila.api.gateway.PostGateway;
 import com.rohila.api.gateway.UserGateway;
-import com.rohila.api.repository.domain.PostDetails;
 import com.rohila.api.repository.domain.UserDetails;
 import com.rohila.api.response.Response;
 import com.rohila.api.service.UserService;
@@ -21,8 +20,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 import static com.rohila.api.constant.AppConstants.*;
-import static com.rohila.api.constant.ErrorMessageConstants.CREATE_POST_ERROR;
-import static com.rohila.api.constant.ErrorMessageConstants.FOLLOW_USER_ERROR;
+import static com.rohila.api.constant.ErrorMessageConstants.*;
 import static com.rohila.api.helper.CommonHelper.mapToDomain;
 import static com.rohila.api.helper.CommonHelper.mapToResource;
 
@@ -88,12 +86,17 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Response retrieveNewsfeeds(Long userId) {
-        LOGGER.debug("retrieving news feed for user = [{}]", userId);
-        UserDetails user = userGateway.retrieveUser(userId);
-        List<Long> userIds = user.getFollowing().stream().map(userDetails -> userDetails.getId()).collect(Collectors.toList());
-        userIds.add(userId);
-        List<Long> postIds = postGateway.retrieveTop20Posts(userIds).stream().map(postDetails -> postDetails.getId()).collect(Collectors.toList());
-        return Response.assemble().build(HttpStatus.OK, new Resource<>(UUID.randomUUID().toString(), POSTS, postIds));
+        try {
+            LOGGER.debug("retrieving news feed for user = [{}]", userId);
+            UserDetails user = userGateway.retrieveUser(userId);
+            List<Long> userIds = user.getFollowing().stream().map(userDetails -> userDetails.getId()).collect(Collectors.toList());
+            userIds.add(userId);
+            List<Long> postIds = postGateway.retrieveTop20Posts(userIds).stream().map(postDetails -> postDetails.getId()).collect(Collectors.toList());
+            return Response.assemble().build(HttpStatus.OK, new Resource<>(UUID.randomUUID().toString(), POSTS, postIds));
+        } catch (Exception e) {
+            LOGGER.error("Failed to retrieve news feed for user = [{}]", userId);
+            throw new ApiResponseException(GET_NEWS_FEED_ERROR.formatDetail(userId));
+        }
     }
 
     /**

@@ -1,10 +1,7 @@
 package com.rohila.api.repository;
 
-import com.rohila.api.repository.domain.PostDetails;
 import com.rohila.api.repository.domain.UserDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -18,8 +15,7 @@ import javax.transaction.Transactional;
 @Repository
 public interface UserRepository extends JpaRepository<UserDetails, Long> {
 
-    @Query("SELECT e FROM UserDetails e WHERE e.id = :id")
-    UserDetails retrieveUserDetailsByUserId(
-            @Param("id") final Long id);
-
+//    @Modifying
+//    @Query("UPDATE u UserDetails SET u.followerId = :followerId, u.followeeId = :followeeId WHERE u.id = :followerId")
+//    void follow(long followerId, long followeeId);
 }

@@ -1,6 +1,6 @@
 package com.rohila.api.gateway;
 
-import com.rohila.api.repository.domain.PostDetails;
+import com.rohila.api.repository.domain.UserDetails;
 
 /**
  * Interface which is used to handle gateway requests for Post Operations
@@ -16,7 +16,7 @@ public interface UserGateway {
      * @param followeeId - followeeId
      * @return message
      */
-    String follow(String followerId, String followeeId);
+    String follow(Long followerId, Long followeeId);
 
     /**
      * Method to follow user
@@ -25,5 +25,13 @@ public interface UserGateway {
      * @param followeeId - followeeId
      * @return message
      */
-    String unfollow(String followerId, String followeeId);
+    String unfollow(Long followerId, Long followeeId);
+
+    /**
+     * Method to create new user
+     *
+     * @param userDetails - userDetails
+     * @return user
+     */
+    UserDetails createUser(UserDetails userDetails);
 }

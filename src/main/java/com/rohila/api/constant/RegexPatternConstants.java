@@ -19,9 +19,14 @@ package com.rohila.api.constant;
  */
 public class RegexPatternConstants {
 
-  /** Private constructor */
-  private RegexPatternConstants() {}
+    /**
+     * Private constructor
+     */
+    private RegexPatternConstants() {
+    }
 
-  /** Constant declartion for NUMBER_PATTERN_REGEX */
-  public static final String NUMBER_PATTERN_REGEX = "^(\\d+\\.)*(\\d+)$";
+    /**
+     * Constant declartion for NUMBER_PATTERN_REGEX
+     */
+    public static final String NUMBER_PATTERN_REGEX = "^(\\d+\\.)*(\\d+)$";
 }

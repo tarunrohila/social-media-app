@@ -15,7 +15,9 @@ import java.util.Map;
  */
 public class RequestContext {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(RequestContext.class);
 
     /**

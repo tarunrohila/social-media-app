@@ -18,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CoreExceptionHandler extends AbstractCoreExceptionHandler {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(CoreExceptionHandler.class);
 
     /**
@@ -37,12 +39,12 @@ public class CoreExceptionHandler extends AbstractCoreExceptionHandler {
      * @param request  - httpServletRequest
      * @param response - httpServletResponse
      * @param handler  - handler
-     * @param e - exception
+     * @param e        - exception
      * @return object
      */
     @Override
     protected Object handleException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {
-        if(e instanceof ApiException) {
+        if (e instanceof ApiException) {
             LOGGER.error("Custom API Exception", e);
             ApiException exception = (ApiException) e;
             response.setStatus(exception.getStatus().value());

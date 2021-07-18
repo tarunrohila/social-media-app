@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.rohila.api.constant.RestRequestConstants.*;
+import static com.rohila.api.constant.RestRequestConstants.POSTS_CREATE_ENDPOINT;
+import static com.rohila.api.constant.RestRequestConstants.USER_ID_PARAM;
 
 /**
  * Class which is used to handle requests for Posts
@@ -22,16 +23,21 @@ import static com.rohila.api.constant.RestRequestConstants.*;
 @RestController
 public class PostController {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(PostController.class);
 
-    /** Autowired instance of postService */
+    /**
+     * Autowired instance of postService
+     */
     @Autowired
     private PostService postService;
 
     /**
      * Method to create user posts
-     * @param userId - userId
+     *
+     * @param userId  - userId
      * @param request - request
      * @return created post
      */

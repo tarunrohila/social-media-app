@@ -6,7 +6,6 @@ import com.rohila.api.gateway.PostGateway;
 import com.rohila.api.repository.domain.PostDetails;
 import com.rohila.api.response.Response;
 import com.rohila.api.service.PostService;
-import javassist.bytecode.stackmap.BasicBlock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,17 +25,21 @@ import static com.rohila.api.helper.CommonHelper.mapToResource;
 @Service
 public class PostServiceImpl implements PostService {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(PostServiceImpl.class);
 
-    /** Autowired instance of postGateway */
+    /**
+     * Autowired instance of postGateway
+     */
     @Autowired
     private PostGateway postGateway;
 
     /**
      * Method to create new post
      *
-     * @param post   - post
+     * @param post - post
      * @return
      */
     @Override

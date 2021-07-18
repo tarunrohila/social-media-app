@@ -9,7 +9,7 @@ import java.util.List;
  * @author Tarun Rohila
  */
 @Entity
-@Table(name="USER_DETAILS")
+@Table(name = "USER_DETAILS")
 public class UserDetails {
 
 
@@ -26,18 +26,13 @@ public class UserDetails {
     private String name;
 
     /**
-     * Variable declaration for followees
+     * Variable declaration for following
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "followeeId")
-    List<UserDetails> followees;
-
-    /**
-     * Variable declaration for followers
-     */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "followerId")
-    List<UserDetails> followers;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "relation",
+            joinColumns = @JoinColumn(name = "followerId"),
+            inverseJoinColumns = @JoinColumn(name = "followeeId"))
+    List<UserDetails> following;
 
     /**
      * Method to get the value of id
@@ -76,39 +71,21 @@ public class UserDetails {
     }
 
     /**
-     * Method to get the value of followees
+     * Method to get the value of following
      *
-     * @return followees - followees
+     * @return following - following
      */
-    public List<UserDetails> getFollowees() {
-        return followees;
+    public List<UserDetails> getFollowing() {
+        return following;
     }
 
     /**
-     * Method to set the value of followees
+     * Method to set the value of following
      *
-     * @param followees - followees
+     * @param following - following
      */
-    public void setFollowees(List<UserDetails> followees) {
-        this.followees = followees;
-    }
-
-    /**
-     * Method to get the value of followers
-     *
-     * @return followers - followers
-     */
-    public List<UserDetails> getFollowers() {
-        return followers;
-    }
-
-    /**
-     * Method to set the value of followers
-     *
-     * @param followers - followers
-     */
-    public void setFollowers(List<UserDetails> followers) {
-        this.followers = followers;
+    public void setFollowing(List<UserDetails> following) {
+        this.following = following;
     }
 }
 

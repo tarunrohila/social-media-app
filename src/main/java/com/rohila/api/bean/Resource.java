@@ -21,7 +21,9 @@ public class Resource<T> implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(Resource.class);
 
     /**

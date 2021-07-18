@@ -29,7 +29,9 @@ import java.util.Map;
  */
 public abstract class LoggingContextFilter extends OncePerRequestFilter {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(LoggingContextFilter.class);
 
     /**

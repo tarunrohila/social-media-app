@@ -15,7 +15,9 @@ import java.io.StringWriter;
  */
 public class JsonUtils {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(JsonUtils.class);
 
     private static ObjectMapper objectMapper = new ObjectMapper();

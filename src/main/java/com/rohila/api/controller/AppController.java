@@ -22,7 +22,9 @@ import static com.rohila.api.constant.RestRequestConstants.PINGS_ENDPOINT;
 @RestController
 public class AppController {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(AppController.class);
 
 

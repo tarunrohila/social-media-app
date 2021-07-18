@@ -11,17 +11,25 @@ import java.util.Date;
  */
 public class Post {
 
-    /** Variable declaration for id */
+    /**
+     * Variable declaration for id
+     */
     private Long id;
 
-    /** Variable declaration for createdAt */
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    /**
+     * Variable declaration for createdAt
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdAt;
 
-    /** Variable declaration for description */
+    /**
+     * Variable declaration for description
+     */
     private String description;
 
-    /** Variable declaration for userId */
+    /**
+     * Variable declaration for userId
+     */
     private String userId;
 
     /**

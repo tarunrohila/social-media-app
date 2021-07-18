@@ -11,23 +11,31 @@ import java.util.Date;
  * @author Tarun Rohila
  */
 @Entity
-@Table(name="POST_DETAILS")
+@Table(name = "POST_DETAILS")
 public class PostDetails {
 
-    /** Variable declaration for id */
+    /**
+     * Variable declaration for id
+     */
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** Variable declaration for createdAt */
+    /**
+     * Variable declaration for createdAt
+     */
     @CreationTimestamp
-    @Column(name="created_at", nullable=false, updatable=false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
 
-    /** Variable declaration for description */
+    /**
+     * Variable declaration for description
+     */
     private String description;
 
-    /** Variable declaration for userId */
+    /**
+     * Variable declaration for userId
+     */
     private String userId;
 
     /**

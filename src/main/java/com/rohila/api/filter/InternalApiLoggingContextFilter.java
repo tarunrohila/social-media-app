@@ -20,7 +20,9 @@ import java.util.Map;
 @Order(10)
 public class InternalApiLoggingContextFilter extends LoggingContextFilter {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(InternalApiLoggingContextFilter.class);
 
     /**

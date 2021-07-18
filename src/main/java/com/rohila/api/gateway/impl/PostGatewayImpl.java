@@ -16,17 +16,21 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class PostGatewayImpl implements PostGateway {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(PostGatewayImpl.class);
 
-    /** Autowired instance of postRepository */
+    /**
+     * Autowired instance of postRepository
+     */
     @Autowired
     private PostRepository postRepository;
 
     /**
      * Method to create new post
      *
-     * @param postDetails   - postDetails
+     * @param postDetails - postDetails
      * @return
      */
     @Override

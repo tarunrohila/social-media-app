@@ -27,7 +27,9 @@ import java.util.Map;
 @JsonFilter("DataFilter")
 public class Response {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(Response.class);
 
     /**

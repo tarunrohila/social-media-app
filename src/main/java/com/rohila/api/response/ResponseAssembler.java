@@ -14,7 +14,9 @@ import java.util.Collection;
  */
 public class ResponseAssembler implements ResponseSuccessAssembler, ResponseErrorAssembler {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(ResponseAssembler.class);
 
     /**

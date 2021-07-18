@@ -29,7 +29,9 @@ import java.io.IOException;
 @Order(20)
 public class MandatoryHeaderValidationFilter extends OncePerRequestFilter {
 
-    /** Logger declaration. */
+    /**
+     * Logger declaration.
+     */
     private static final Logger LOGGER = LogManager.getLogger(MandatoryHeaderValidationFilter.class);
 
     /**

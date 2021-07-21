@@ -45,6 +45,11 @@ public class MandatoryHeaderValidationFilter extends OncePerRequestFilter {
     private static final String H2_CONSOLE_URI = "/h2-console";
 
     /**
+     * Constant declaration for SWAGGER_DOC uri
+     */
+    private static final String SWAGGER_DOC = "/api-docs";
+
+    /**
      * Overridden method to filter
      *
      * @param request     - request
@@ -66,7 +71,7 @@ public class MandatoryHeaderValidationFilter extends OncePerRequestFilter {
                         .getRequestURI()
                         .substring(request.getContextPath().length())
                         .replaceAll("[/]+$", "");
-        boolean allowedPath = path.startsWith(HEALTHCHECK_ACTUATOR_URI) || path.startsWith(H2_CONSOLE_URI);
+        boolean allowedPath = path.startsWith(HEALTHCHECK_ACTUATOR_URI) || path.startsWith(H2_CONSOLE_URI) || path.contains(SWAGGER_DOC);
         LOGGER.debug("Request Path = [{}]", path);
         boolean isCorrelationIdPresent = checkCorrelationHeaderPresent(request, response);
         if (!isCorrelationIdPresent && !allowedPath) {

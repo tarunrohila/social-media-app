@@ -1,13 +1,3 @@
-/*
- * Copyright (c) 2019 Rohila Technologies, All Rights Reserved.
- *
- * This code is confidential to Rohila Technologies and shall not be disclosed outside the
- * organisation without the prior written permission of the IT Director of the organisation.
- *
- * In the event that such disclosure is permitted the code shall not be copied or disclosed other
- * than a need-to-know basis and any recipients may be required to sign a confidentiality
- * undertaking in favour of Rohila Technologies.
- */
 package com.rohila.api.exception;
 
 import com.rohila.api.util.JsonUtils;

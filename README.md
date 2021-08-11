@@ -1,2 +1,2 @@
-# trade-app
-Trade App
+# social-media-app
+Social Media App

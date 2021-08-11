@@ -47,6 +47,19 @@ public class ResponseAssembler implements ResponseSuccessAssembler, ResponseErro
 
 
     /**
+     * Method to add headers
+     *
+     * @param key   - key
+     * @param value - value
+     * @return response assembler
+     */
+    public ResponseAssembler setHeader(String key, String value) {
+        LOGGER.debug("Adding header in the response name = [{}], value = [{]}", key, value);
+        responseToAssemble.headers.add(key, value);
+        return this;
+    }
+
+    /**
      * Method to build response
      *
      * @param payload - payload
@@ -91,6 +104,26 @@ public class ResponseAssembler implements ResponseSuccessAssembler, ResponseErro
             responseToAssemble.errors = new ArrayList<Message>();
         }
         responseToAssemble.errors.add(errorMessage);
+        return this;
+    }
+
+    /**
+     * Method to add error messages
+     *
+     * @param errorMessages - errorMessages
+     * @return response error assembler
+     */
+    @Override
+    public ResponseErrorAssembler addErrorMesages(Collection<Message> errorMessages) {
+        LOGGER.debug("Adding erro message in the response status : {}", errorMessages);
+        if (errorMessages == null) {
+            return this;
+        }
+        for (Message m : errorMessages) {
+            if (m != null) {
+                addErrorMesage(m);
+            }
+        }
         return this;
     }
 

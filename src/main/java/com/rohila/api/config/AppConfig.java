@@ -3,22 +3,13 @@ package com.rohila.api.config;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.rohila.api.exception.CoreExceptionHandler;
 import com.rohila.api.serializer.DataFilter;
-import com.rohila.api.serializer.DateTimeSerializer;
-import com.rohila.api.service.TradeService;
 import com.rohila.api.util.JsonUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.scheduling.annotation.Scheduled;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -28,26 +19,19 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.function.Predicate;
 
 import static com.sun.javafx.fxml.expression.Expression.or;
+import static springfox.documentation.builders.PathSelectors.regex;
 
 /**
- * Class which is used to provide configuration beans
+ * Class which is used to provide configuration beans to Social Media App
  *
  * @author Tarun Rohila
  */
 @Configuration
 @EnableSwagger2
 public class AppConfig {
-
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
-    @Autowired
-    private TradeService tradeService;
 
     /**
      * Method to create bean for exception handler
@@ -58,7 +42,6 @@ public class AppConfig {
     public CoreExceptionHandler getCoreExceptionHandler() {
         return new CoreExceptionHandler();
     }
-
 
     /**
      * Method to customize object mapper with configuration
@@ -94,14 +77,9 @@ public class AppConfig {
      * @return api info
      */
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Trade APP")
-                .description("Trade APP")
+        return new ApiInfoBuilder().title("Social Media APP")
+                .description("Social Media APP")
                 .contact(new Contact("Tarun", "http://localhost:8080", "tarunrohila@gmail.com")).version("1.0").build();
-    }
-
-    @Scheduled(cron = "${trade.expiry.scheduler.cron}")
-    public void reportCurrentTime() {
-        tradeService.updateExpiryFlags();
     }
 
 }

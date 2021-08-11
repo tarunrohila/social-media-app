@@ -20,6 +20,14 @@ public interface ResponseErrorAssembler {
     ResponseErrorAssembler addErrorMesage(Message errorMessage);
 
     /**
+     * Method to add error messages
+     *
+     * @param errorMessages - errorMessages
+     * @return response error assembler
+     */
+    ResponseErrorAssembler addErrorMesages(Collection<Message> errorMessages);
+
+    /**
      * Method to build response
      *
      * @param errorStatus - errorStatus

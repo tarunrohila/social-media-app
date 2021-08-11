@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 /**
- * Class which is used to configure spring boot app
+ * Class which is used to configure spring boot app for social media api
  *
  * @author Tarun Rohila
  */

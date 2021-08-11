@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.Serializable;
 
 /**
- * Class file to create object of Request for Social Media App
+ * Class file to create object of Request
  *
  * @author Tarun Rohila
  */
